@@ -1,16 +1,28 @@
 let tableFortic = document.querySelectorAll(".aa");
 let check = 0;
+let res = "x";
+let finish = document.querySelector(".finish");
 function resetTable() {
   tableFortic.forEach((elem) => {
-    elem.innerHTML = "";
-    
+    elem.removeEventListener("click",gm,false);
   });
-  check = 0;
+  let result;
+  if (check === 9) {
+    result = "no winners";
+  } else {
+    result = `player ${res} is win`;
+  }
+  let fin = ` ${result}`;
+  finish.insertAdjacentHTML("beforeend", fin);
+
+  
+  //check = 0;
+  setTimeout(function () {
+    window.location.reload();
+  }, 2000);
 }
 
 function gm() {
-  let res = "x";
-  
   for (let i = 0; i < tableFortic.length; i++) {
     tableFortic[i].addEventListener("click", function () {
       if (
@@ -28,7 +40,6 @@ function gm() {
         tableFortic[1].innerHTML === res &&
         tableFortic[2].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -39,8 +50,6 @@ function gm() {
         tableFortic[4].innerHTML === res &&
         tableFortic[5].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -51,8 +60,6 @@ function gm() {
         tableFortic[7].innerHTML === res &&
         tableFortic[8].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -64,8 +71,6 @@ function gm() {
         tableFortic[3].innerHTML === res &&
         tableFortic[6].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -76,8 +81,6 @@ function gm() {
         tableFortic[4].innerHTML === res &&
         tableFortic[7].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -88,8 +91,6 @@ function gm() {
         tableFortic[5].innerHTML === res &&
         tableFortic[8].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -100,8 +101,6 @@ function gm() {
         tableFortic[4].innerHTML === res &&
         tableFortic[8].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -112,8 +111,6 @@ function gm() {
         tableFortic[4].innerHTML === res &&
         tableFortic[6].innerHTML === res
       ) {
-        alert(`player ${res} is win`);
-
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -121,8 +118,6 @@ function gm() {
       }
 
       if (check === 9) {
-        alert("no winners");
-        
         setTimeout(function () {
           resetTable();
         }, 1000);
@@ -139,6 +134,6 @@ function gm() {
 
   return;
 }
-
-gm();
+document.querySelector("button").addEventListener("click", gm);
+//gm();
 console.log("welcome winner");
